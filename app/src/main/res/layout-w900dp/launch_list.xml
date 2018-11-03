@@ -10,7 +10,7 @@
               android:divider="?android:attr/dividerHorizontal"
               android:orientation="horizontal"
               android:showDividers="middle"
-              tools:context=".LaunchListActivity">
+              tools:context=".ui.LaunchListActivity">
 
     <!--
     This layout is a two-pane layout for the Launches
@@ -27,7 +27,7 @@
                                             android:layout_marginLeft="16dp"
                                             android:layout_marginRight="16dp"
                                             app:layoutManager="LinearLayoutManager"
-                                            tools:context="com.scrpn.spacex.spacexrocketlaunches.LaunchListActivity"
+                                            tools:context="com.scrpn.spacex.spacexrocketlaunches.ui.LaunchListActivity"
                                             tools:listitem="@layout/launch_list_content"/>
 
     <FrameLayout

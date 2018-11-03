@@ -9,5 +9,5 @@
                                         android:layout_marginLeft="16dp"
                                         android:layout_marginRight="16dp"
                                         app:layoutManager="LinearLayoutManager"
-                                        tools:context=".LaunchListActivity"
+                                        tools:context=".ui.LaunchListActivity"
                                         tools:listitem="@layout/launch_list_content"/>

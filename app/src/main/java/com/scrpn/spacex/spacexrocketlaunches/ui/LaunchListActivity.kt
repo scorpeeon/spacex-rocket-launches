@@ -1,4 +1,4 @@
-package com.scrpn.spacex.spacexrocketlaunches
+package com.scrpn.spacex.spacexrocketlaunches.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.scrpn.spacex.spacexrocketlaunches.R
 
 import com.scrpn.spacex.spacexrocketlaunches.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_launch_list.*
@@ -55,7 +56,12 @@ class LaunchListActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
+        recyclerView.adapter =
+                SimpleItemRecyclerViewAdapter(
+                    this,
+                    DummyContent.ITEMS,
+                    twoPane
+                )
     }
 
     class SimpleItemRecyclerViewAdapter(

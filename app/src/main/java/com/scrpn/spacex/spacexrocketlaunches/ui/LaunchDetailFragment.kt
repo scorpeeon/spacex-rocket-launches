@@ -1,16 +1,17 @@
-package com.scrpn.spacex.spacexrocketlaunches
+package com.scrpn.spacex.spacexrocketlaunches.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.scrpn.spacex.spacexrocketlaunches.R
 import com.scrpn.spacex.spacexrocketlaunches.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_launch_detail.*
 import kotlinx.android.synthetic.main.launch_detail.view.*
 
 /**
- * A fragment representing a single Launch detail screen.
+ * A fragment representing a single SpaceXLaunch detail screen.
  * This fragment is either contained in a [LaunchListActivity]
  * in two-pane mode (on tablets) or a [LaunchDetailActivity]
  * on handsets.
