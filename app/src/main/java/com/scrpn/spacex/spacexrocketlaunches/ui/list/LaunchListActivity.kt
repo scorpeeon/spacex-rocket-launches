@@ -1,4 +1,4 @@
-package com.scrpn.spacex.spacexrocketlaunches.ui
+package com.scrpn.spacex.spacexrocketlaunches.ui.list
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,8 @@ import android.widget.TextView
 import com.scrpn.spacex.spacexrocketlaunches.R
 
 import com.scrpn.spacex.spacexrocketlaunches.dummy.DummyContent
+import com.scrpn.spacex.spacexrocketlaunches.ui.detail.LaunchDetailActivity
+import com.scrpn.spacex.spacexrocketlaunches.ui.detail.LaunchDetailFragment
 import kotlinx.android.synthetic.main.activity_launch_list.*
 import kotlinx.android.synthetic.main.launch_list_content.view.*
 import kotlinx.android.synthetic.main.launch_list.*

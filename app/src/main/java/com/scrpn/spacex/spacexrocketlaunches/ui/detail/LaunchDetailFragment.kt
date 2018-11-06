@@ -1,4 +1,4 @@
-package com.scrpn.spacex.spacexrocketlaunches.ui
+package com.scrpn.spacex.spacexrocketlaunches.ui.detail
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -52,6 +52,8 @@ class LaunchDetailFragment : Fragment() {
     }
 
     companion object {
+        fun newInstance() = LaunchDetailFragment()
+
         /**
          * The fragment argument representing the item ID that this fragment
          * represents.

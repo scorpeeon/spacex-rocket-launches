@@ -1,4 +1,4 @@
-package com.scrpn.spacex.spacexrocketlaunches.ui
+package com.scrpn.spacex.spacexrocketlaunches.ui.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.scrpn.spacex.spacexrocketlaunches.R
+import com.scrpn.spacex.spacexrocketlaunches.ui.list.LaunchListActivity
 import kotlinx.android.synthetic.main.activity_launch_detail.*
 
 /**

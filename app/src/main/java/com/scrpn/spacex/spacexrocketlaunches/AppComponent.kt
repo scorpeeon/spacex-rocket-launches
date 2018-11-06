@@ -12,4 +12,8 @@ import javax.inject.Singleton
     DiskModule::class
 ])
 interface AppComponent {
+    // TODO
+//    fun inject(baseActivity: BaseActivity)
+//
+//    fun inject(baseFragment: BaseFragment)
 }
