@@ -13,7 +13,7 @@ import javax.inject.Singleton
 ])
 interface AppComponent {
     // TODO
-//    fun inject(baseActivity: BaseActivity)
-//
-//    fun inject(baseFragment: BaseFragment)
+    fun inject(baseActivity: BaseActivity)
+
+    fun inject(baseFragment: BaseFragment)
 }

@@ -1,4 +1,4 @@
-package com.scrpn.spacex.spacexrocketlaunches.ui.list
+package com.scrpn.spacex.spacexrocketlaunches.ui.launchlist
 
 import android.content.Intent
 import android.os.Bundle
