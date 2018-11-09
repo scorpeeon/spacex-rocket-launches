@@ -1,17 +1,15 @@
 package com.scrpn.spacex.spacexrocketlaunches.ui.list
 
 import com.scrpn.spacex.spacexrocketlaunches.domain.interactor.SpaceXLaunchInteractor
-import kotlinx.coroutines.experimental.Dispatchers
-import kotlinx.coroutines.experimental.IO
-import kotlinx.coroutines.experimental.withContext
+import hu.autsoft.rainbowcake.withIOContext
 import javax.inject.Inject
 
 class ListPresenter @Inject constructor(
     private val spaceXLaunchInteractor: SpaceXLaunchInteractor
 ) {
-    suspend fun getRockets(): List<RocketPreview> = withContext(Dispatchers.IO) {
+    suspend fun getRockets(): List<RocketPreview> = withIOContext {
         val articles = spaceXLaunchInteractor.getRocketLaunches()
-            ?: return@withContext emptyList<RocketPreview>()
+            ?: return@withIOContext emptyList<RocketPreview>()
 
         articles.map {
             RocketPreview(
@@ -21,7 +19,7 @@ class ListPresenter @Inject constructor(
         }
     }
 
-    suspend fun refreshRockets() = withContext(Dispatchers.IO) {
+    suspend fun refreshRockets() = withIOContext {
         spaceXLaunchInteractor.refreshRocketLaunches("falconheavy")
     }
 

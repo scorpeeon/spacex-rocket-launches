@@ -1,4 +1,4 @@
-package com.scrpn.spacex.spacexrocketlaunches
+package com.scrpn.spacex.spacexrocketlaunches.di
 
 import android.content.Context
 import android.content.res.Resources
@@ -8,6 +8,7 @@ import javax.inject.Singleton
 
 @Module
 class ApplicationModule(private val context: Context) {
+
     @Provides
     @Singleton
     fun provideContext(): Context = context
@@ -15,4 +16,5 @@ class ApplicationModule(private val context: Context) {
     @Provides
     @Singleton
     fun provideResources(context: Context): Resources = context.resources
+
 }

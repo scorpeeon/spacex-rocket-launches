@@ -1,19 +1,18 @@
-package com.scrpn.spacex.spacexrocketlaunches
+package com.scrpn.spacex.spacexrocketlaunches.di
 
 import com.scrpn.spacex.spacexrocketlaunches.disk.DiskModule
 import com.scrpn.spacex.spacexrocketlaunches.network.NetworkModule
 import dagger.Component
+import hu.autsoft.rainbowcake.di.BaseComponent
+import hu.autsoft.rainbowcake.di.BaseModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
+    BaseModule::class,
     ApplicationModule::class,
+    ViewModelModule::class,
     NetworkModule::class,
     DiskModule::class
 ])
-interface AppComponent {
-    // TODO
-    fun inject(baseActivity: BaseActivity)
-
-    fun inject(baseFragment: BaseFragment)
-}
+interface AppComponent : BaseComponent

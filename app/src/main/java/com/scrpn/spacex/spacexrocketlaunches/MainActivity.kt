@@ -1,18 +1,16 @@
 package com.scrpn.spacex.spacexrocketlaunches
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.scrpn.spacex.myapplicationviewmodel.ui.main.MainFragment
+import com.scrpn.spacex.spacexrocketlaunches.ui.list.ListFragment
+import hu.autsoft.rainbowcake.navigation.SimpleNavActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : SimpleNavActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
+            navigator.add(ListFragment())
         }
     }
 
