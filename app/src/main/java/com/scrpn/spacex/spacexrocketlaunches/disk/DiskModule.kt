@@ -14,7 +14,11 @@ class DiskModule {
 
     @Provides
     @Singleton
-    fun provideLaunchDao(spaceXLaunchDatabase: SpaceXDatabase): SpaceXLaunchDao = spaceXLaunchDatabase.spaceXLaunchDao()
+    fun provideLaunchDao(spaceXDatabase: SpaceXDatabase): SpaceXLaunchDao = spaceXDatabase.spaceXLaunchDao()
+
+    @Provides
+    @Singleton
+    fun provideRocketDao(spaceXDatabase: SpaceXDatabase): SpaceXRocketDao = spaceXDatabase.spaceXRocketDao()
 
     @Provides
     @Singleton

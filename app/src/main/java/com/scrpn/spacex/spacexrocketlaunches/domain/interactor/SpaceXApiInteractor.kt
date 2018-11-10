@@ -2,10 +2,11 @@ package com.scrpn.spacex.spacexrocketlaunches.domain.interactor
 
 import com.scrpn.spacex.spacexrocketlaunches.disk.model.DiskDataSource
 import com.scrpn.spacex.spacexrocketlaunches.domain.model.SpaceXLaunch
+import com.scrpn.spacex.spacexrocketlaunches.domain.model.SpaceXRocket
 import com.scrpn.spacex.spacexrocketlaunches.network.NetworkDataSource
 import javax.inject.Inject
 
-class SpaceXLaunchInteractor @Inject constructor(
+class SpaceXApiInteractor @Inject constructor(
     private val diskDataSource: DiskDataSource,
     private val networkDataSource: NetworkDataSource
 ) {
@@ -20,5 +21,16 @@ class SpaceXLaunchInteractor @Inject constructor(
         //diskDataSource.removeAllSpaceXLaunches()
         diskDataSource.removeSpaceXLaunchesForRocket(rocketId)
         diskDataSource.insertSpaceXLaunches(launches)
+    }
+
+    fun getRockets(): List<SpaceXRocket>? {
+        return diskDataSource.getAllSpaceXRockets()
+    }
+
+    suspend fun refreshRockets() {
+        val rockets = networkDataSource.getRockets() ?: return
+
+        diskDataSource.removeAllSpaceXRockets()
+        diskDataSource.insertSpaceXRockets(rockets)
     }
 }

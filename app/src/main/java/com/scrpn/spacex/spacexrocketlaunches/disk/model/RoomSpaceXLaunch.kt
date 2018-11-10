@@ -9,7 +9,9 @@ data class RoomSpaceXLaunch (
     @PrimaryKey
     var flightNumber: Int? = null,
     var missionName: String? = null,
+    var launchDateUnix: Long? = null,
     var rocketId: String? = null,
     var details: String? = null,
-    var launchSuccess: Boolean? = null
+    var launchSuccess: Boolean? = null,
+    var missionPatch: String?
 )
