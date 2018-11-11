@@ -23,7 +23,8 @@ class ListPresenter @Inject constructor(
                 rocketId = it.rocketId!!,
                 rocketName = it.rocketName!!,
                 country = it.country!!,
-                engineNumber = it.engineNumber!!
+                engineNumber = it.engineNumber!!,
+                active = it.active!!
             )
         }
     }
@@ -37,6 +38,7 @@ class ListPresenter @Inject constructor(
         val rocketId: String,
         val rocketName: String,
         val country: String,
-        val engineNumber: Int
+        val engineNumber: Int,
+        val active: Boolean
     )
 }

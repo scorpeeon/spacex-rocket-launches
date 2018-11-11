@@ -1,5 +1,6 @@
 package com.scrpn.spacex.spacexrocketlaunches.ui.list
 
+import android.content.Context
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,7 +9,7 @@ import android.view.ViewGroup
 import com.scrpn.spacex.spacexrocketlaunches.R
 import kotlinx.android.synthetic.main.rocket_list_content.view.*
 
-class RocketPreviewAdapter : ListAdapter<ListPresenter.RocketPreview, RocketPreviewAdapter.ViewHolder>(RocketPreviewComparator) {
+class RocketPreviewAdapter(var context: Context?) : ListAdapter<ListPresenter.RocketPreview, RocketPreviewAdapter.ViewHolder>(RocketPreviewComparator) {
     var listener: Listener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,12 +25,14 @@ class RocketPreviewAdapter : ListAdapter<ListPresenter.RocketPreview, RocketPrev
         holder.item = item
 
         holder.title.text = item.rocketName
-        holder.details.text = item.country + " " + item.engineNumber
+        holder.details.text = item.country
+        holder.engineNumber.text = context?.getString(R.string.engine_number, item.engineNumber)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.title
         val details = itemView.details
+        val engineNumber = itemView.engineNumber
 
         var item: ListPresenter.RocketPreview? = null
 

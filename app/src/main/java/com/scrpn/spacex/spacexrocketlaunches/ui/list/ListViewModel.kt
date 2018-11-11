@@ -11,7 +11,13 @@ class ListViewModel @Inject constructor(
         execute {
             viewState = viewState.copy(refreshing = true)
             listPresenter.refreshRockets()
-            viewState = ListViewState(rocketPreviews = listPresenter.getRockets(), refreshing = false)
+            viewState = viewState.copy(rocketPreviews = listPresenter.getRockets(), refreshing = false)
+        }
+    }
+
+    fun setFilterByActive(filterByActive: Boolean) {
+        execute {
+            viewState = viewState.copy(filterByActive = filterByActive)
         }
     }
 }

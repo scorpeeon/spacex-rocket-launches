@@ -3,6 +3,7 @@ package com.scrpn.spacex.spacexrocketlaunches.ui.list
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.View
+import androidx.core.view.get
 import com.scrpn.spacex.spacexrocketlaunches.R
 import hu.autsoft.rainbowcake.base.BaseFragment
 import hu.autsoft.rainbowcake.base.getViewModelFromFactory
@@ -28,15 +29,21 @@ class ListFragment : BaseFragment<ListViewState, ListViewModel>(), RocketPreview
     }
 
     override fun render(viewState: ListViewState) {
-        adapter.submitList(viewState.rocketPreviews)
+        var listToDisplay = viewState.rocketPreviews
+        if (viewState.filterByActive) {
+            listToDisplay = listToDisplay.filter { it.active }
+        }
+        adapter.submitList(listToDisplay)
+
+        toolbar.menu[0].isChecked = viewState.filterByActive
 
         swipeRefreshLayout.isRefreshing = viewState.refreshing
     }
 
     private fun setupRecyclerView() {
-        adapter = RocketPreviewAdapter()
+        adapter = RocketPreviewAdapter(context)
         adapter.listener = this
-        articleList.adapter = adapter
+        rocketList.adapter = adapter
 
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorAccent))
         swipeRefreshLayout.setOnRefreshListener {
@@ -45,7 +52,17 @@ class ListFragment : BaseFragment<ListViewState, ListViewModel>(), RocketPreview
     }
 
     private fun setupToolbar() {
-        // toolbar.inflateMenu(R.menu.menu_list) // TODO
+        toolbar.inflateMenu(R.menu.menu_list)
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_filter_by_active -> {
+                    it.isChecked = !it.isChecked
+                    viewModel.setFilterByActive(it.isChecked)
+                    true
+                }
+            }
+            true
+        }
     }
 
     override fun onItemSelected(rocketId: String) {
