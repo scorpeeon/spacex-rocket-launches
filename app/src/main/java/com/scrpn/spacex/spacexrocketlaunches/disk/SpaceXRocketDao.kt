@@ -10,6 +10,9 @@ interface SpaceXRocketDao {
     @Query("SELECT * FROM rockets")
     fun getAllSpaceXRockets(): List<RoomSpaceXRocket>
 
+    @Query("SELECT * FROM rockets WHERE id = :id")
+    fun getSpaceXRocketById(id: Int): RoomSpaceXRocket?
+
     @Insert
     fun insertSpaceXRockets(spaceXRockets: List<RoomSpaceXRocket>)
 

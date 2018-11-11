@@ -38,12 +38,12 @@ class RocketPreviewAdapter(var context: Context?) : ListAdapter<ListPresenter.Ro
 
         init {
             itemView.setOnClickListener {
-                item?.let { item -> listener?.onItemSelected(item.rocketId) }
+                item?.let { item -> listener?.onItemSelected(item.id) }
             }
         }
     }
 
     interface Listener {
-        fun onItemSelected(rocketId: String)
+        fun onItemSelected(rocketsId: Int)
     }
 }

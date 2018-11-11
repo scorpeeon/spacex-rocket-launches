@@ -27,6 +27,10 @@ class SpaceXApiInteractor @Inject constructor(
         return diskDataSource.getAllSpaceXRockets()
     }
 
+    fun getRocketById(id: Int): SpaceXRocket? {
+        return diskDataSource.getSpaceXRocketById(id)
+    }
+
     suspend fun refreshRockets() {
         val rockets = networkDataSource.getRockets() ?: return
 

@@ -5,8 +5,10 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import androidx.core.view.get
 import com.scrpn.spacex.spacexrocketlaunches.R
+import com.scrpn.spacex.spacexrocketlaunches.ui.detail.DetailFragment
 import hu.autsoft.rainbowcake.base.BaseFragment
 import hu.autsoft.rainbowcake.base.getViewModelFromFactory
+import hu.autsoft.rainbowcake.navigation.navigator
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : BaseFragment<ListViewState, ListViewModel>(), RocketPreviewAdapter.Listener {
@@ -65,7 +67,7 @@ class ListFragment : BaseFragment<ListViewState, ListViewModel>(), RocketPreview
         }
     }
 
-    override fun onItemSelected(rocketId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onItemSelected(rocketsId: Int) {
+        navigator?.add(DetailFragment.newInstance(rocketsId))
     }
 }

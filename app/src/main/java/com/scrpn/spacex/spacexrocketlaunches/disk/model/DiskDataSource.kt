@@ -41,6 +41,10 @@ class DiskDataSource @Inject constructor(
         spaceXRocketDao.removeAllSpaceXRockets()
     }
 
+    fun getSpaceXRocketById(id: Int): SpaceXRocket? {
+        return spaceXRocketDao.getSpaceXRocketById(id)?.let(RoomSpaceXRocket::toDomainSpaceXRocket)
+    }
+
 //    fun getSpaceXLaunchById(launchId: Int): SpaceXLaunch? {
 //        return spaceXLaunchDao.getSpaceXLaunchById(launchId)?.let(RoomSpaceXLaunch::toDomainSpaceXLaunch)
 //    }

@@ -5,7 +5,6 @@
                                                  android:layout_width="match_parent"
                                                  android:layout_height="match_parent"
                                                  android:fitsSystemWindows="true"
-                                                 tools:context=".ui.detail.LaunchDetailActivity"
                                                  tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout
@@ -25,7 +24,7 @@
                 app:toolbarId="@+id/toolbar">
 
             <android.support.v7.widget.Toolbar
-                    android:id="@+id/detail_toolbar"
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
@@ -35,20 +34,23 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-            android:id="@+id/launch_detail_container"
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|start"
-            android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/stat_notify_chat"
-            app:layout_anchor="@+id/launch_detail_container"
-            app:layout_anchorGravity="top|end"/>
+        <android.support.v4.widget.NestedScrollView
+                android:id="@+id/launch_detail_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <TextView
+                    android:id="@+id/rocketDescriptionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"/>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>
