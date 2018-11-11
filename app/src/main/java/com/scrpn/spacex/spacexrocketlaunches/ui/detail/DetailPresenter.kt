@@ -26,9 +26,15 @@ class DetailPresenter @Inject constructor(
             ?: return@withIOContext emptyList<LaunchPreview>()
 
         launches.map {
+            val convertedDate = Date(TimeUnit.SECONDS.toMillis(it.launchDateUnix!!))
+            val cal = Calendar.getInstance()
+            cal.time = convertedDate
+            val year = cal.get(Calendar.YEAR)
+
             LaunchPreview(
                 missionName = it.missionName!!,
-                date = Date(TimeUnit.SECONDS.toMillis(it.launchDateUnix!!)),
+                date = convertedDate,
+                year = year,
                 launchSuccess = it.launchSuccess!!,
                 missionPatch = it.missionPatch
             )
@@ -48,6 +54,7 @@ class DetailPresenter @Inject constructor(
     data class LaunchPreview (
         val missionName: String,
         val date: Date,
+        val year: Int,
         val launchSuccess: Boolean,
         val missionPatch: String?
     )

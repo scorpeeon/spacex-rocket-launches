@@ -3,4 +3,6 @@
     <string name="title_launch_detail">Launch Detail</string>
     <string name="engine_number">Engine Number: %1$d</string>
     <string name="menu_item_filter_by_active">Show only active</string>
+    <string name="launches">Launches</string>
+    <string name="launches_per_year">Launches per year</string>
 </resources>
