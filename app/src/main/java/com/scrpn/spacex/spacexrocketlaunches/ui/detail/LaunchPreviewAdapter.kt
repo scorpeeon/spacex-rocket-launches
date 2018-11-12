@@ -14,7 +14,7 @@ import java.text.DateFormat
 import java.util.*
 
 
-class LaunchPreviewAdapter(var context: Context?) : ListAdapter<DetailPresenter.LaunchPreview, RecyclerView.ViewHolder>(LaunchPreviewComparator) {
+class LaunchPreviewAdapter(var context: Context?) : ListAdapter<Any, RecyclerView.ViewHolder>(LaunchPreviewComparator) {
     companion object {
         private const val TYPE_HEADER = 0
         private const val TYPE_LAUNCH = 1
@@ -38,15 +38,15 @@ class LaunchPreviewAdapter(var context: Context?) : ListAdapter<DetailPresenter.
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder.itemViewType == TYPE_HEADER) {
-            val item = getItem(position)
+            val item = getItem(position) as String
 
-            var holder = holder as HeaderViewHolder
+            val holder = holder as HeaderViewHolder
 
-            holder.launchHeader.text = item.year.toString()
+            holder.launchHeader.text = item
         } else {
-            val item = getItem(position)
+            val item = getItem(position) as DetailPresenter.LaunchPreview
 
-            var holder = holder as ContentViewHolder
+            val holder = holder as ContentViewHolder
             holder.item = item
 
             holder.missionName.text = item.missionName
@@ -77,10 +77,31 @@ class LaunchPreviewAdapter(var context: Context?) : ListAdapter<DetailPresenter.
     }
 
     override fun getItemViewType(position: Int): Int {
-        return TYPE_LAUNCH // TODO
+        return if (getItem(position) is String) {
+            TYPE_HEADER
+        } else {
+            TYPE_LAUNCH
+        }
     }
 
     interface Listener {
         fun onItemSelected(flightNumber: Int)
+    }
+
+    override fun submitList(list: List<Any>?) {
+        // Adding headers for years
+        val list = list as List<DetailPresenter.LaunchPreview>?
+        val orderedList = list?.sortedBy { it.date }
+
+        var listWithHeaders = ArrayList<Any>()
+        orderedList?.forEach {
+            val lastAddedElement = listWithHeaders.lastOrNull()
+            if (lastAddedElement == null ||
+                lastAddedElement is DetailPresenter.LaunchPreview && lastAddedElement.year != it.year) {
+                listWithHeaders.add(it.year.toString())
+            }
+            listWithHeaders.add(it)
+        }
+        super.submitList(listWithHeaders)
     }
 }
