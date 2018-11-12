@@ -16,6 +16,8 @@ data class NetworkSpaceXRocket (
     val country: String,
     val company: String,
     val engines: NetworkEngines,
+    @SerializedName("flickr_images")
+    val flickrImages: List<String>,
     val wikipedia: String,
     val description: String,
     @SerializedName("rocket_id")

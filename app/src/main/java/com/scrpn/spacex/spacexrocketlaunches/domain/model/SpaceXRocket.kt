@@ -11,6 +11,7 @@ data class SpaceXRocket (
     val country: String?,
     val company: String?,
     val engineNumber: Int?,
+    val flickrImageUrl: String?,
     val wikipedia: String?,
     val description: String?,
     val rocketId: String?,

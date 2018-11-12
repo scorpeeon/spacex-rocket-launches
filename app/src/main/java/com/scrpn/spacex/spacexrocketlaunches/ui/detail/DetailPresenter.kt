@@ -15,7 +15,8 @@ class DetailPresenter @Inject constructor(
             RocketDetail(
                 rocketId = it.rocketId!!,
                 title = it.rocketName!!,
-                description = it.description!!
+                description = it.description!!,
+                flickrImageUrl = it.flickrImageUrl
             )
         }
     }
@@ -48,7 +49,8 @@ class DetailPresenter @Inject constructor(
     data class RocketDetail(
         val rocketId: String,
         val title: String,
-        val description: String
+        val description: String,
+        val flickrImageUrl: String?
     )
 
     data class LaunchPreview (

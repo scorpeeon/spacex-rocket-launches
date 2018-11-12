@@ -54,6 +54,7 @@ class NetworkDataSource @Inject constructor(
                 country = networkSpaceXRocket.country,
                 company = networkSpaceXRocket.company,
                 engineNumber = networkSpaceXRocket.engines.number,
+                flickrImageUrl = networkSpaceXRocket.flickrImages.firstOrNull(),
                 wikipedia = networkSpaceXRocket.wikipedia,
                 description = networkSpaceXRocket.description,
                 rocketId = networkSpaceXRocket.rocketId,

@@ -3,6 +3,7 @@ package com.scrpn.spacex.spacexrocketlaunches.ui.detail
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.view.View
+import com.bumptech.glide.Glide
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -70,7 +71,7 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>() {
         toolbar.title = viewState.rocketDetail?.title
         rocketDescriptionText.text = viewState.rocketDetail?.description
         swipeRefreshLayout.isRefreshing = viewState.refreshing
-        //Glide.with(image).load(rocket.imageUrl).into(image) // TODO
+        Glide.with(toolbarImage).load(viewState.rocketDetail?.flickrImageUrl).into(toolbarImage)
 
         updateChart(viewState)
     }
