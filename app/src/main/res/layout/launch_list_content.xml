@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_margin="@dimen/text_margin">
+    <ImageView
+            android:id="@+id/missionPatch"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/missionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="Mission"/>
+
+        <TextView
+                android:id="@+id/launchDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                tools:text="2018.11.12"/>
+        <CheckBox
+                android:id="@+id/launchSuccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:text="@string/successful"
+                android:enabled="false"/>
+    </LinearLayout>
+</LinearLayout>

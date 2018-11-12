@@ -17,11 +17,15 @@ import hu.autsoft.rainbowcake.navigation.navigator
 import kotlinx.android.synthetic.main.fragment_detail.*
 import java.util.*
 
-class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>() {
+class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>(), LaunchPreviewAdapter.Listener {
+    override fun onItemSelected(flightNumber: Int) {
+        // Doing nothing
+    }
 
     override fun provideViewModel() = getViewModelFromFactory()
-
     override fun getViewResource() = R.layout.fragment_detail
+
+    lateinit var adapter: LaunchPreviewAdapter
 
     companion object {
         private const val ROCKETS_ID = "ROCKETS_ID"
@@ -46,6 +50,7 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>() {
         setupToolbar()
         setupSwipeToRefreshLayout()
         setupChart()
+        setupRecyclerView()
     }
 
     private fun setupSwipeToRefreshLayout() {
@@ -61,6 +66,12 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>() {
         }
     }
 
+    private fun setupRecyclerView() {
+        adapter = LaunchPreviewAdapter(context)
+        adapter.listener = this
+        launchList.adapter = adapter
+    }
+
     override fun onStart() {
         super.onStart()
 
@@ -74,6 +85,7 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>() {
         Glide.with(toolbarImage).load(viewState.rocketDetail?.flickrImageUrl).into(toolbarImage)
 
         updateChart(viewState)
+        adapter.submitList(viewState.launchPreviews)
     }
 
     private fun updateChart(viewState: DetailViewState) {

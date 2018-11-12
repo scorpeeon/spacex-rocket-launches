@@ -5,4 +5,5 @@
     <string name="menu_item_filter_by_active">Show only active</string>
     <string name="launches">Launches</string>
     <string name="launches_per_year">Launches per year</string>
+    <string name="successful">Successful</string>
 </resources>

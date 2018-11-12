@@ -33,6 +33,7 @@ class DetailPresenter @Inject constructor(
             val year = cal.get(Calendar.YEAR)
 
             LaunchPreview(
+                flightNumber = it.flightNumber!!,
                 missionName = it.missionName!!,
                 date = convertedDate,
                 year = year,
@@ -54,6 +55,7 @@ class DetailPresenter @Inject constructor(
     )
 
     data class LaunchPreview (
+        val flightNumber: Int,
         val missionName: String,
         val date: Date,
         val year: Int,
