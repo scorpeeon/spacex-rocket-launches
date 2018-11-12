@@ -5,9 +5,9 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.scrpn.spacex.spacexrocketlaunches.R
 import hu.autsoft.rainbowcake.base.BaseFragment
 import hu.autsoft.rainbowcake.base.getViewModelFromFactory
@@ -89,18 +89,20 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>(), LaunchP
     }
 
     private fun updateChart(viewState: DetailViewState) {
-        val barEntries: ArrayList<BarEntry> = ArrayList()
+        val lineEntries: ArrayList<Entry> = ArrayList()
         val groupedLaunches = viewState.launchPreviews.groupBy { it.year }
         for (groupedLaunch in groupedLaunches) {
-            barEntries.add(BarEntry(groupedLaunch.key.toFloat(), groupedLaunch.value.count().toFloat()))
+            lineEntries.add(Entry(groupedLaunch.key.toFloat(), groupedLaunch.value.count().toFloat()))
         }
 
-        val barDataSet = BarDataSet(barEntries, getString(R.string.launches))
-        barDataSet.valueFormatter = MyValueFormatter()
-        val barData = BarData(barDataSet)
-        chart.data = barData
+        if (!lineEntries.isEmpty()) {
+            val lineDataSet = LineDataSet(lineEntries, getString(R.string.launches))
+            lineDataSet.valueFormatter = MyValueFormatter()
+            val lineData = LineData(lineDataSet)
+            chart.data = lineData
 
-        chart.invalidate()
+            chart.invalidate()
+        }
     }
 
     private fun setupChart() {
