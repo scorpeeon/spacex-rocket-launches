@@ -30,6 +30,8 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>(), LaunchP
     companion object {
         private const val ROCKETS_ID = "ROCKETS_ID"
 
+        private const val CHART_LINE_WIDTH = 2.0f
+
         fun newInstance(rocketsId: Int): DetailFragment {
             return DetailFragment().withArgs {
                 putInt(ROCKETS_ID, rocketsId)
@@ -97,11 +99,14 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>(), LaunchP
 
         if (!lineEntries.isEmpty()) {
             val lineDataSet = LineDataSet(lineEntries, getString(R.string.launches))
+            lineDataSet.lineWidth = CHART_LINE_WIDTH
             lineDataSet.valueFormatter = MyValueFormatter()
             val lineData = LineData(lineDataSet)
             chart.data = lineData
 
             chart.invalidate()
+        } else {
+            chart.clear()
         }
     }
 
