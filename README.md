@@ -6,9 +6,9 @@ It uses
 - The RainbowCake architecture (based on Kotlin languages features and the Google Jetpack libraries)
 - Retrofit (for REST calls)
 - Dagger 2 (for DI)
-- Kotlin coroutines for async tasks
+- Kotlin coroutines (for async tasks)
 - Support Library
 - ViewModel, LiveData
 - Room (for persistence)
 - Glide (for image loading)
-- MPAndroidChart for displaying chart
+- MPAndroidChart (for displaying chart)
