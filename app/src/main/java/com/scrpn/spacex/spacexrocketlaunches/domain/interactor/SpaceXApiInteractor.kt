@@ -15,10 +15,13 @@ class SpaceXApiInteractor @Inject constructor(
         return diskDataSource.getAllSpaceXLaunches()
     }
 
+    fun getRocketLaunchesForRocket(rocketId: String): List<SpaceXLaunch>? {
+        return diskDataSource.getSpaceXLaunchesForRocket(rocketId)
+    }
+
     suspend fun refreshRocketLaunches(rocketId: String) {
         val launches = networkDataSource.getLaunches(rocketId) ?: return
 
-        //diskDataSource.removeAllSpaceXLaunches()
         diskDataSource.removeSpaceXLaunchesForRocket(rocketId)
         diskDataSource.insertSpaceXLaunches(launches)
     }

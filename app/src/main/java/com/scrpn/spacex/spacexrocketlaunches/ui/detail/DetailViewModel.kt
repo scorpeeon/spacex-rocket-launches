@@ -9,8 +9,9 @@ class DetailViewModel @Inject constructor(
     fun load(id: Int) {
         execute {
             viewState = viewState.copy(rocketDetail = detailPresenter.getRocket(id), refreshing = true)
-            detailPresenter.refreshLaunches(viewState.rocketDetail?.rocketId!!) // TODO viewState.rocketDetail?.rocketId!!
-            viewState = viewState.copy(launchPreviews = detailPresenter.getLaunches(), refreshing = false)
+            val rocketId = viewState.rocketDetail?.rocketId!!
+            detailPresenter.refreshLaunches(rocketId)
+            viewState = viewState.copy(launchPreviews = detailPresenter.getLaunches(rocketId), refreshing = false)
         }
     }
 }

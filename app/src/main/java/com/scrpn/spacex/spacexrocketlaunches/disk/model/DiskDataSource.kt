@@ -15,6 +15,10 @@ class DiskDataSource @Inject constructor(
         return spaceXLaunchDao.getAllSpaceXLaunches().map(RoomSpaceXLaunch::toDomainSpaceXLaunch)
     }
 
+    fun getSpaceXLaunchesForRocket(rocketId: String): List<SpaceXLaunch> {
+        return spaceXLaunchDao.getSpaceXLaunchesForRocket(rocketId).map(RoomSpaceXLaunch::toDomainSpaceXLaunch)
+    }
+
     fun insertSpaceXLaunches(spaceXLaunches: List<SpaceXLaunch>) {
         val roomLaunches = spaceXLaunches.map(SpaceXLaunch::toRoomSpaceXLaunch)
         spaceXLaunchDao.insertSpaceXLaunches(roomLaunches)
@@ -25,7 +29,7 @@ class DiskDataSource @Inject constructor(
     }
 
     fun removeSpaceXLaunchesForRocket(rocketId: String) {
-        spaceXLaunchDao.removeAllSpaceXLaunches()
+        spaceXLaunchDao.removeSpaceXLaunchesForRocket(rocketId)
     }
 
     fun getAllSpaceXRockets(): List<SpaceXRocket>? {
@@ -45,7 +49,7 @@ class DiskDataSource @Inject constructor(
         return spaceXRocketDao.getSpaceXRocketById(id)?.let(RoomSpaceXRocket::toDomainSpaceXRocket)
     }
 
-//    fun getSpaceXLaunchById(launchId: Int): SpaceXLaunch? {
-//        return spaceXLaunchDao.getSpaceXLaunchById(launchId)?.let(RoomSpaceXLaunch::toDomainSpaceXLaunch)
-//    }
+    fun getSpaceXLaunchById(launchId: Int): SpaceXLaunch? {
+        return spaceXLaunchDao.getSpaceXLaunchById(launchId)?.let(RoomSpaceXLaunch::toDomainSpaceXLaunch)
+    }
 }

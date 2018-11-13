@@ -10,11 +10,11 @@ interface SpaceXLaunchDao {
     @Query("SELECT * FROM launches")
     fun getAllSpaceXLaunches(): List<RoomSpaceXLaunch>
 
-//    @Query("SELECT * FROM launches WHERE flightNumber = :launchId")
-//    fun getSpaceXLaunchById(launchId: Int): RoomSpaceXLaunch?
+    @Query("SELECT * FROM launches WHERE flightNumber = :launchId")
+    fun getSpaceXLaunchById(launchId: Int): RoomSpaceXLaunch?
 
-    @Query("SELECT * FROM launches WHERE id = :id")
-    fun getSpaceXLaunchesForRocket(id: Int): RoomSpaceXLaunch?
+    @Query("SELECT * FROM launches WHERE rocketId = :rocketId")
+    fun getSpaceXLaunchesForRocket(rocketId: String): List<RoomSpaceXLaunch>
 
     @Insert
     fun insertSpaceXLaunches(spaceXLaunches: List<RoomSpaceXLaunch>)

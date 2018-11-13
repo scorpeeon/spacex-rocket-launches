@@ -21,9 +21,9 @@ class DetailPresenter @Inject constructor(
         }
     }
 
-    suspend fun getLaunches(): List<LaunchPreview> = withIOContext {
+    suspend fun getLaunches(rocketId: String): List<LaunchPreview> = withIOContext {
 
-        val launches = spaceXApiInteractor.getRocketLaunches()
+        val launches = spaceXApiInteractor.getRocketLaunchesForRocket(rocketId)
             ?: return@withIOContext emptyList<LaunchPreview>()
 
         launches.map {
