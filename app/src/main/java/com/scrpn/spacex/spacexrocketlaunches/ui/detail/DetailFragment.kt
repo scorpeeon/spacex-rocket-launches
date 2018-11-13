@@ -2,6 +2,8 @@ package com.scrpn.spacex.spacexrocketlaunches.ui.detail
 
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.view.View
 import com.bumptech.glide.Glide
 import com.github.mikephil.charting.components.Description
@@ -66,6 +68,10 @@ class DetailFragment : BaseFragment<DetailViewState, DetailViewModel>(), LaunchP
         toolbar.setNavigationOnClickListener {
             navigator?.pop()
         }
+        var activity = activity as AppCompatActivity
+        activity.setSupportActionBar(toolbar)
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        activity.supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     private fun setupRecyclerView() {
