@@ -7,4 +7,7 @@
     <string name="launches_per_year">Launches per year</string>
     <string name="successful">Successful</string>
     <string name="mission_patch">Mission Patch</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_details">You can filter the list from the toolbar menu. Click on a rocket to see more information.
+    </string>
 </resources>
